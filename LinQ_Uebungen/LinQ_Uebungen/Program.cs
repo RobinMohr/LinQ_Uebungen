@@ -9,7 +9,9 @@ namespace LinQ_Uebungen
     internal class Program
     {
         static void Main(string[] args)
-        {
+        {/*
+            //Aufgabe 1
+
             List<int> even = new List<int>();
             List<int> odd = new List<int>();
 
@@ -36,11 +38,26 @@ namespace LinQ_Uebungen
             {
                 Console.WriteLine(num);
             }
+            Console.WriteLine();
+
+            //Aufgabe 2
 
             Console.WriteLine("Ungerade Zahlen:");
             foreach (int num in odd)
             {
                 Console.WriteLine(num);
+            }
+
+            //Aufgabe 3*/
+
+            var varr1 = new[] { 3, 9, 2, 8, 6, 5 };
+            foreach (int num in varr1)
+            {
+                if (num * num > 20)
+                {
+                    Console.WriteLine(num);
+                    Console.WriteLine(num*num);
+                }
             }
 
 

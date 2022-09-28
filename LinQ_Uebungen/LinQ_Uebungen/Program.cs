@@ -89,9 +89,34 @@ namespace LinQ_Uebungen
                        select y;
             foreach (var num in nums1)
             {
-                Console.WriteLine("Nummer " + num.Key + " ist " + num.Count() + " mal vorhanden. \nDie Zahl mit der Anzhal ihres Auftretens ergibt " + num.Key * num.Count());
+                Console.WriteLine("Nummer " + num.Key + " ist " + num.Count() + " mal vorhanden. \nDie Zahl multipliziert mit der Anzhal ihres Auftretens ergibt " + num.Key * num.Count());
             }
 
+            //Aufgabe 7
+
+            string[] cities =
+            {
+                "ROME","LONDON","NAIROBI","CALIFORNIA","ZURICH","NEW DELHI","AMSTERDAM","ABU DHABI", "PARIS"
+            };
+
+            Console.WriteLine("Mit welchen Buchstaben sollen die Städte beginnen?");
+            string starting = Console.ReadLine();
+
+            Console.WriteLine("Mit welchen Buchstaben sollen die Städte aufhören?");
+            string ending = Console.ReadLine();
+
+            var result = from x in cities
+                         where x.StartsWith(starting)
+                         where x.EndsWith(ending)
+                         select x;
+            if (result.Count() == 0)
+            {
+                Console.WriteLine($"Es gibt keine Stadt, die mit {starting} anfängt und mit {ending} aufhört.");
+            }
+            foreach (var city in result)
+            {
+                Console.WriteLine($"Die Stadt, welche mit {starting} anfängt und mit {ending} aufhört ist {city}. ");
+            }
 
 
 

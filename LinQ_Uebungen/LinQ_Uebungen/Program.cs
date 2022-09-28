@@ -16,18 +16,16 @@ namespace LinQ_Uebungen
 
         static void Main(string[] args)
         {
-            //Aufgabe 15
+            //Aufgabe 16
 
-            List<string> listOfString = new List<string>();
-            listOfString.Add("m");
-            listOfString.Add("n");
-            listOfString.Add("o");
-            listOfString.Add("p");
-            listOfString.Add("q");
+            var set1 = new string[] { "X", "Y", "Z" };
+            var set2 = new int[] { 1, 2, 3 };
 
-            listOfString.Remove("p");
+            var set3 = from x in set1
+                       from y in set2
+                       select x + y;
 
-            foreach (var x in listOfString)
+            foreach (var x in set3)
             {
                 Console.WriteLine(x);
             }

@@ -16,7 +16,7 @@ namespace LinQ_Uebungen
 
         static void Main(string[] args)
         {
-            //Aufgabe 14
+            //Aufgabe 15
 
             List<string> listOfString = new List<string>();
             listOfString.Add("m");
@@ -25,16 +25,11 @@ namespace LinQ_Uebungen
             listOfString.Add("p");
             listOfString.Add("q");
 
+            listOfString.Remove("p");
 
-            string newstr = listOfString.FirstOrDefault(en => en == "o");
-            listOfString.Remove(newstr);
-
-            var _result = from z in listOfString
-                          select z;
-
-            foreach (var z in _result)
+            foreach (var x in listOfString)
             {
-                Console.WriteLine(z);
+                Console.WriteLine(x);
             }
 
 

@@ -16,18 +16,18 @@ namespace LinQ_Uebungen
 
         static void Main(string[] args)
         {
-            //Aufgabe 16
+            //Aufgabe 17
 
-            var set1 = new string[] { "X", "Y", "Z" };
-            var set2 = new int[] { 1, 2, 3 };
+            var setOfStringsArray = new string[] { "X", "Y", "Z" };
+            var setOfIntsArray = new int[] { 1, 2, 3 };
 
-            var set3 = from x in set1
-                       from y in set2
-                       select x + y;
+            var neueArray = new string[setOfStringsArray.Length];
 
-            foreach (var x in set3)
+            var combine = setOfStringsArray.Zip(setOfIntsArray, (a, c) => new { setOfStringsArray = a, setOfIntsArray = c });
+
+            foreach (var a in combine)
             {
-                Console.WriteLine(x);
+                Console.WriteLine(a.setOfStringsArray + a.setOfIntsArray);
             }
 
 

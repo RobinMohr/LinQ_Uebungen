@@ -10,143 +10,32 @@ namespace LinQ_Uebungen
     {
         static void Main(string[] args)
         {
-            //Aufgabe 1
-
-
-            Console.WriteLine("Wie viele Nummern sollen in der Liste sein?");
-            int amount = Convert.ToInt32(Console.ReadLine());
-
-            List<int> numbers = Rdm_Numbers(amount);
-
-            var even = from num in numbers
-                       where num % 2 == 0
-                       select num;
-
-            Console.WriteLine("Das sind die Geraden Zahlen:");
-            foreach (int num in even)
-            {
-                Console.WriteLine(num);
-            }
-
-            //Aufgabe 2
-
-            var odd = from num in numbers
-                       where num % 2 != 0
-                       select num;
-
-            Console.WriteLine("Das sind die Ungeraden Zahlen:");
-            foreach (int num in odd)
-            {
-                Console.WriteLine(num);
-            }
-
-            //Aufgabe 3
-
-            var arr1 = new[] { 3, 9, 2, 8, 6, 5, };
-
-            var arr2 = from num in arr1
-                       where num * num > 20
-                       select num;
-
-            Console.WriteLine("Das sind die Zahlen, deren Qadratzahl größer als 20 ist:");
-            foreach (int num in arr2)
-            {
-                Console.WriteLine(num);
-                Console.WriteLine(num*num);
-                Console.WriteLine();
-            }
-
-            //Aufgabe 4
-
-            int[] arr3 = new int[] { 5, 9, 1, 2, 3, 7, 5, 6, 7, 3, 7, 6, 8, 9, 5, 4, 9, 6, 2 };
-
-            var arr4 = from num in arr3
-                       group num by num into y
-                       select y;
-                        foreach (var num in arr4)
-                        {
-                            Console.WriteLine("Nummer " + num.Key + " ist " + num.Count()+" mal vorhanden.");
-                        }
-
-            //Aufgabe 5
-
-            string str1 = "w3resource";
-
-            var str2 = from num in str1
-                       group num by num into y
-                       select y;
-            foreach (var str in str2)
-            {
-                Console.WriteLine("Buchstabe " + str.Key + " ist " + str.Count() + " mal vorhanden.");
-            }
-
-            //Aufgabe 6
-
-            int[] nums = new int[] { 5, 1, 9, 2, 3, 7, 4, 5, 6, 8, 7, 6, 3, 4, 5, 2 };
-
-            var nums1 = from num in nums
-                       group num by num into y
-                       select y;
-            foreach (var num in nums1)
-            {
-                Console.WriteLine("Nummer " + num.Key + " ist " + num.Count() + " mal vorhanden. \nDie Zahl multipliziert mit der Anzhal ihres Auftretens ergibt " + num.Key * num.Count());
-            }
-
-            //Aufgabe 7
-
-            string[] cities =
-            {
-                "ROME","LONDON","NAIROBI","CALIFORNIA","ZURICH","NEW DELHI","AMSTERDAM","ABU DHABI", "PARIS"
-            };
-
-            Console.WriteLine("Mit welchen Buchstaben sollen die Städte beginnen?");
-            string starting = Console.ReadLine();
-            starting = starting.ToUpper();
-
-            Console.WriteLine("Mit welchen Buchstaben sollen die Städte aufhören?");
-            string ending = Console.ReadLine();
-            ending = ending.ToUpper();
-
-            var result = from x in cities
-                         where x.StartsWith(starting)
-                         where x.EndsWith(ending)
-                         select x;
-            if (result.Count() == 0)
-            {
-                Console.WriteLine($"Es gibt keine Stadt, die mit {starting} anfängt und mit {ending} aufhört.");
-            }
-            foreach (var city in result)
-            {
-                Console.WriteLine($"Die Stadt, welche mit {starting} anfängt und mit {ending} aufhört ist {city}. ");
-            }
-
-            //Aufgabe 8
-
-            Console.Clear();
+            //Aufgabe 9
 
             List<int> ints = new List<int>();
 
-            Console.WriteLine("Wie viele Plätze soll die Liste haben?");
-            int amount_ = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Wie viele Einträge soll die Liste haben?");
+            int amount = Convert.ToInt32(Console.ReadLine());
 
-            for (int i = 0; i < amount_; i++)
+            Random random = new Random();
+            for (int i = 0; i < amount; i++)
             {
-                Console.Clear();
-                Console.WriteLine($"Bitte gebe die {i+1}. Zahl ein.");
-                ints.Add(Convert.ToInt32(Console.ReadLine()));
+                ints.Add(random.Next(1,1001));
             }
 
-            Console.WriteLine("Wie groß soll die kleinste Zahl sein?");
-            int min = Convert.ToInt32(Console.ReadLine());
+            var sorted = from x in ints
+                         orderby x
+                         select x;
 
-            var result1 = from x in ints
-                          where x>min 
-                          select x;
+            Console.WriteLine("Wie viele Zahlen willst du Anzeigen lassen)");
+            int amount1 = Convert.ToInt32(Console.ReadLine());
 
-            foreach (int i in result1)
+            foreach (int x in sorted.Take(amount1))
             {
-                Console.WriteLine($"Die Zahl {i} war größer als {min}.");
+                Console.WriteLine(x);
             }
+            
+
 
 
 
@@ -155,19 +44,6 @@ namespace LinQ_Uebungen
             Console.ReadKey();
 
 
-        }
-        static List<int> Rdm_Numbers(int amount)
-        {
-            Random random = new Random();
-            List<int> ints = new List<int>();
-
-            for (int i = 0; i < amount; i++)
-            {
-                ints.Add(random.Next(1,1001));
-            }
-            
-            return ints;
-        }
-
+        }        
     }
 }

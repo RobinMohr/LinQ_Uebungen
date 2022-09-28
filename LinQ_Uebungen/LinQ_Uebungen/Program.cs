@@ -101,9 +101,11 @@ namespace LinQ_Uebungen
 
             Console.WriteLine("Mit welchen Buchstaben sollen die Städte beginnen?");
             string starting = Console.ReadLine();
+            starting = starting.ToUpper();
 
             Console.WriteLine("Mit welchen Buchstaben sollen die Städte aufhören?");
             string ending = Console.ReadLine();
+            ending = ending.ToUpper();
 
             var result = from x in cities
                          where x.StartsWith(starting)
@@ -117,6 +119,35 @@ namespace LinQ_Uebungen
             {
                 Console.WriteLine($"Die Stadt, welche mit {starting} anfängt und mit {ending} aufhört ist {city}. ");
             }
+
+            //Aufgabe 8
+
+            Console.Clear();
+
+            List<int> ints = new List<int>();
+
+            Console.WriteLine("Wie viele Plätze soll die Liste haben?");
+            int amount_ = Convert.ToInt32(Console.ReadLine());
+
+            for (int i = 0; i < amount_; i++)
+            {
+                Console.Clear();
+                Console.WriteLine($"Bitte gebe die {i+1}. Zahl ein.");
+                ints.Add(Convert.ToInt32(Console.ReadLine()));
+            }
+
+            Console.WriteLine("Wie groß soll die kleinste Zahl sein?");
+            int min = Convert.ToInt32(Console.ReadLine());
+
+            var result1 = from x in ints
+                          where x>min 
+                          select x;
+
+            foreach (int i in result1)
+            {
+                Console.WriteLine($"Die Zahl {i} war größer als {min}.");
+            }
+
 
 
 

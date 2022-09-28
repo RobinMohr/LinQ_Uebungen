@@ -53,9 +53,20 @@ namespace LinQ_Uebungen
             {
                 Console.WriteLine(num);
                 Console.WriteLine(num*num);
+                Console.WriteLine();
             }
 
             //Aufgabe 4
+
+            int[] arr3 = new int[] { 5, 9, 1, 2, 3, 7, 5, 6, 7, 3, 7, 6, 8, 9, 5, 4, 9, 6, 2 };
+
+            var arr4 = from num in arr3
+                       group num by num into y
+                       select y;
+                        foreach (var num in arr4)
+            {
+                Console.WriteLine("Nummer " + num.Key + " ist " + num.Count()+" mal vorhanden.");
+            }
 
 
 

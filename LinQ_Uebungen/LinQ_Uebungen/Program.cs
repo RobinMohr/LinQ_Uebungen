@@ -11,23 +11,14 @@ namespace LinQ_Uebungen
     {
         static void Main(string[] args)
         {
-            //Aufgabe 10
+            //Aufgabe 11
 
-            Console.WriteLine("Bitte gib mehrere wörter von denen ein paar in Caps geschrieben sind.");
-            string text = Console.ReadLine();
+            string[] arr1 = new string[4] { "cat", "dog", "cow", "tiger" };
 
-            var upWord = text.Split(' ')
-                        .Where(x => String.Equals(x, x.ToUpper(),
-                        StringComparison.Ordinal));
-
-            foreach (var word in upWord)
-            {
-                Console.WriteLine(word);
-            }
-
-
-
-
+            string newstring = String.Join(", ", arr1
+                          .Select(s => s.ToString())
+                          .ToArray());
+            Console.WriteLine(newstring);
 
 
             Console.ReadKey();

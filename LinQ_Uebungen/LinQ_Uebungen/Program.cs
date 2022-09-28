@@ -22,7 +22,7 @@ namespace LinQ_Uebungen
                        where nums % 2 == 0
                        select nums;
 
-            Console.WriteLine("Das sind die Geraden Zahlen");
+            Console.WriteLine("Das sind die Geraden Zahlen:");
             foreach (int num in even)
             {
                 Console.WriteLine(num);
@@ -34,11 +34,31 @@ namespace LinQ_Uebungen
                        where nums % 2 == 0
                        select nums;
 
-            Console.WriteLine("Das sind die Ungeraden Zahlen");
+            Console.WriteLine("Das sind die Ungeraden Zahlen:");
             foreach (int num in odd)
             {
                 Console.WriteLine(num);
             }
+
+            //Aufgabe 3
+
+            var arr1 = new[] { 3, 9, 2, 8, 6, 5, };
+
+            var arr2 = from nums in arr1
+                       where nums * nums > 20
+                       select nums;
+
+            Console.WriteLine("Das sind die Zahlen, deren Qadratzahl größer als 20 ist:");
+            foreach (int num in arr2)
+            {
+                Console.WriteLine(num);
+                Console.WriteLine(num*num);
+            }
+
+            //Aufgabe 4
+
+
+
 
 
 
